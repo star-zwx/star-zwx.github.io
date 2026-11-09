@@ -14,6 +14,7 @@ const array = (value, field) => assert(Array.isArray(value), `${field} must be a
 async function url(value, field) {
   string(value, field);
   if (!value) return;
+  assert(!/^[^\s/@:]+@[^\s/]+\.[^\s/]+$/.test(value), `${field}: email links must start with mailto: (for example, mailto:${value}).`);
   const resolved = new URL(value, "https://homepage.invalid/");
   assert(["http:", "https:", "mailto:"].includes(resolved.protocol), `${field}: unsupported URL protocol.`);
   if (!/^[a-z][a-z\d+.-]*:/i.test(value) && !value.startsWith("//")) {
@@ -21,7 +22,11 @@ async function url(value, field) {
     const local = path.resolve(root, decodeURIComponent(resolved.pathname.slice(1)));
     const relative = path.relative(root, local);
     assert(!relative.startsWith("..") && !path.isAbsolute(relative), `${field}: asset must stay inside the project.`);
-    await access(local);
+    try {
+      await access(local);
+    } catch {
+      assert.fail(`${field}: local file "${value}" was not found. Check the path and filename case; email links need mailto:, and web links need https://.`);
+    }
   }
 }
 
@@ -29,7 +34,7 @@ assert(data && data.profile && data.about && data.research && data.publications 
 for (const key of ["name", "nativeName", "initials", "role", "department", "affiliation", "location", "email", "note"]) string(data.profile[key], `profile.${key}`, key === "name");
 for (const key of ["avatar", "cv"]) await url(data.profile[key], `profile.${key}`);
 array(data.profile.links, "profile.links");
-for (const item of data.profile.links) { string(item.label, "profile link label", true); await url(item.href, "profile link"); }
+for (const item of data.profile.links) { string(item.label, "profile link label", true); await url(item.href, `profile link "${item.label}"`); }
 string(data.about.title, "about.title", true);
 array(data.about.paragraphs, "about.paragraphs");
 for (const paragraph of data.about.paragraphs) string(paragraph, "about paragraph");
@@ -46,7 +51,8 @@ for (const paper of data.publications.items) {
   assert(!ids.has(paper.id), `Duplicate publication id: ${paper.id}`);
   ids.add(paper.id);
   assert(Number.isInteger(paper.year) && paper.year > 1900 && paper.year < 2200, `${paper.id}: year must be a valid integer.`);
-  for (const key of ["title", "venue"]) string(paper[key], `${paper.id}.${key}`, true);
+  string(paper.title, `${paper.id}.title`, true);
+  string(paper.venue, `${paper.id}.venue`);
   for (const key of ["venueShort", "summary", "bibtex"]) if (paper[key] !== undefined) string(paper[key], `${paper.id}.${key}`);
   array(paper.authors, `${paper.id}.authors`);
   for (const author of paper.authors) string(author, `${paper.id} author`, true);

@@ -19,7 +19,7 @@ window.SITE_DATA = {
     cv: "", // 例如 "assets/cv.pdf"；留空隐藏简历按钮
     note: "Always happy to exchange ideas and explore new collaborations.", // 留空可隐藏
     links: [
-      { label: "Email", icon: "mail", href: "zwx8282520@126.com" },
+      { label: "Email", icon: "mail", href: "mailto:zwx8282520@126.com" },
       { label: "CSDN", icon: "scholar", href: "https://blog.csdn.net/zwx82520?type=blog" },
       { label: "GitHub", icon: "github", href: "https://github.com/star-zwx" },
       // 可添加 { label: "ORCID", icon: "external", href: "https://orcid.org/你的编号" }
