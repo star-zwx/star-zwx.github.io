@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Personal academic homepage — research, publications, and experience." />
+    <meta name="theme-color" content="#f8f9f6" />
+    <title>Your Name — Academic Homepage</title>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="site.config.js" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="wordmark" href="#about" aria-label="Go to introduction">
+          <span class="brand-mark" aria-hidden="true">✳</span>
+          <span id="brand-name">Your Name</span><span class="wordmark-divider"></span><span class="wordmark-note">A personal space for ideas.</span>
+        </a>
+        <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="site-nav"><span></span><span></span></button>
+        <nav id="site-nav" aria-label="Main navigation">
+          <a class="nav-link active" href="#about" aria-current="location">About</a>
+          <a class="nav-link" href="#research">Research</a>
+          <a class="nav-link" href="#publications">Publications</a>
+          <a class="nav-link" href="#experience">Experience</a>
+        </nav>
+      </div>
+    </header>
+
+    <div class="page-layout">
+      <aside class="profile" aria-label="Personal information">
+        <div id="profile-portrait" class="profile-portrait">
+          <svg class="portrait-art" viewBox="0 0 260 276" fill="none" aria-hidden="true">
+            <path d="M-40 224C15 124 105 158 146 60S267-28 304-58M-37 247C18 147 108 181 149 83S270-5 307-35M-34 270C21 170 111 204 152 106S273 18 310-12M-31 293C24 193 114 227 155 129S276 41 313 11M-28 316C27 216 117 250 158 152S279 64 316 34M-25 339C30 239 120 273 161 175S282 87 319 57" stroke="currentColor" stroke-width="1" />
+            <circle cx="218" cy="43" r="72" stroke="currentColor" /><circle cx="218" cy="43" r="90" stroke="currentColor" />
+          </svg>
+          <span id="portrait-initials" class="portrait-initials">YN</span>
+          <span class="portrait-caption">A PLACE FOR YOUR PORTRAIT</span>
+          <span class="portrait-corner" aria-hidden="true">↗</span>
+        </div>
+        <div class="profile-information">
+          <h1 id="profile-name">Your Name</h1>
+          <p id="profile-native-name" class="native-name">你的姓名</p>
+          <p id="profile-role" class="profile-role"></p>
+          <p id="profile-department" class="profile-detail"></p>
+          <p id="profile-affiliation" class="profile-detail"></p>
+          <p class="profile-location"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M20 10c0 6-8 11-8 11S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg><span id="profile-location"></span></p>
+          <div id="profile-links" class="profile-links"></div>
+          <a id="cv-link" class="cv-link" hidden>Curriculum vitae <span aria-hidden="true">↓</span></a>
+          <div id="profile-note" class="profile-note"><span class="status-dot" aria-hidden="true"></span><p></p></div>
+        </div>
+      </aside>
+
+      <main id="main">
+        <section id="about" class="about-section" aria-labelledby="about-heading">
+          <p class="eyebrow"><span></span> HELLO & WELCOME</p>
+          <h2 id="about-heading" class="hero-heading"></h2>
+          <div id="biography" class="biography"></div>
+          <a class="text-link connect-link" id="contact-link">Let’s connect <span aria-hidden="true">↗</span></a>
+          <div class="news-block" id="news-block">
+            <h3 class="mini-heading"><span class="news-icon" aria-hidden="true">↗</span> Lately</h3>
+            <ul id="news-list" class="news-list"></ul>
+          </div>
+        </section>
+
+        <section id="research" class="content-section" aria-labelledby="research-heading">
+          <div class="section-heading"><h2 id="research-heading">Research interests</h2><span class="section-number" aria-hidden="true">01 /</span></div>
+          <p id="research-intro" class="section-intro"></p>
+          <div id="research-grid" class="research-grid"></div>
+        </section>
+
+        <section id="publications" class="content-section" aria-labelledby="publications-heading">
+          <div class="section-heading"><h2 id="publications-heading">Selected publications</h2><span class="section-number" aria-hidden="true">02 /</span></div>
+          <div class="publications-toolbar"><p id="publications-note" class="section-intro"></p><div id="year-filters" class="year-filters" role="group" aria-label="Filter publications by year"></div></div>
+          <div id="publication-list" class="publication-list" aria-live="polite"></div>
+        </section>
+
+        <section id="experience" class="content-section experience-section" aria-labelledby="experience-heading">
+          <div class="section-heading"><h2 id="experience-heading">Education & experience</h2><span class="section-number" aria-hidden="true">03 /</span></div>
+          <div id="experience-list" class="experience-list"></div>
+        </section>
+
+        <section class="contact-section" aria-labelledby="contact-heading">
+          <span class="contact-symbol" aria-hidden="true">↗</span>
+          <div><h2 id="contact-heading">Good research starts with a conversation.</h2><p id="contact-note"></p></div>
+          <a id="contact-email" class="text-link">Say hello <span aria-hidden="true">↗</span></a>
+        </section>
+      </main>
+    </div>
+
+    <footer class="site-footer"><div><span id="copyright"></span><span class="footer-note">Built with curiosity. Kept simple.</span></div><a href="#about">Back to top <span aria-hidden="true">↑</span></a></footer>
+
+    <dialog id="citation-dialog" class="citation-dialog" aria-labelledby="citation-heading">
+      <div class="dialog-heading"><h2 id="citation-heading">Cite this work</h2><button id="close-citation" class="icon-button" type="button" aria-label="Close citation">×</button></div>
+      <p class="dialog-description">BibTeX citation</p><pre id="citation-text" tabindex="0"></pre>
+      <div class="dialog-footer"><span id="copy-status" role="status"></span><button id="copy-citation" class="primary-button" type="button">Copy BibTeX</button></div>
+    </dialog>
+    <noscript><div class="noscript-message">Please enable JavaScript to display the profile. Personal information is stored in site.config.js.</div></noscript>
+  </body>
+</html>

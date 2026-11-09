@@ -1,0 +1,14 @@
+{
+  "name": "personal-academic-homepage",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A minimal, configurable academic homepage ready for GitHub Pages.",
+  "scripts": {
+    "dev": "node scripts/serve.mjs",
+    "start": "node scripts/serve.mjs",
+    "check": "node --check app.js && node --check site.config.js && node --check scripts/serve.mjs && node scripts/check.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
